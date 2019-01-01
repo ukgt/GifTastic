@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>GifTastic</title>
+</head>
+
+<body>
+  <!-- When user clicks on Submit button 
+     else value 
+            1. buttons APPENDS to page
+            2. API gets 10 giphs
+            3. Giphs are added to page
+    if no value 
+            1. alert user to input value 
+            
+    When user clicks on gif
+            1. if gif is playing
+                    stop animation
+               if gif is stopped
+                start animation
+                 -->
+
+  <div id="buttonHolder"></div>
+  <div id="gifHolder"></div>
+
+    <br />
+  <p>Type the name of a Looney Tunes character:</p>
+  <!-- input form for submit button -->
+  <form action="url" method="get" accept-charset="utf-8" class="form horizontal" id="reg">
+    <input name="firstname" style="width: 200px" type="text" id="inputtopics" />
+    <div class="controls-actions">
+      <button type="submit" id="btnsubmit">Submit</button>
+    </div>
+  </form>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script type="text/javascript">
+  // onclick event for submit button
+    $(document).ready(function () {
+      $("#btnsubmit").on("click", function (event) {
+        event.preventDefault();
+
+        if ($("#inputtopics").val().trim() == "") {
+          alert("put something in");
+        } else {
+          let topics = $("<input/>").attr({ type: "button", name: "mybutton", value: $("#inputtopics").val().trim() });
+          $("#buttonHolder").append(topics);
+          getGifs($("#inputtopics").val().trim());
+        }
+      });
+    });
+
+    function getGifs(looneyName) {
+      var queryURL = `https://api.giphy.com/v1/gifs/search?api_key=dc6zaTOxFJmzC&limit=10&q=${looneyName}`;
+
+      $.ajax({
+        url: queryURL,
+        method: "GET"
+      }).then(function (response) {
+        console.log(response);
+
+        // var arrayGifs = [];
+      for (var i = 0; i < response.data.length; i++){
+        var newImg = $("<img>");
+        newImg.attr("src", queryURL);
+        $("#gifHolder").append(newImg);
+
+      }
+
+
+
+      }).catch(function (response) {
+        alert("ERROR, nothing found, please check your input.")
+      });
+      
+    
+      
+      function displayGifs(img){
+        alert("here are my gifs");
+        $("#gifHolder").attr('src', queryURL);
+      }
+      // displayGifs();
+   
+    }
+    
+
+  </script>
+</body>
+
+</html>

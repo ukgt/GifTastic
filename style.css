@@ -1,8 +1,12 @@
 #gifHolder {
         background: pink;
+        /* margin-bottom: 400px;
+        margin-top: 400px; */
+        width: 100%;
 }
 
 #buttonHolder {
 
         background: green;
+        margin-top: 20px;
 }

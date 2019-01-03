@@ -27,8 +27,9 @@
                  -->
 
     <div id="buttonHolder"></div>
+    <div>
     <div id="gifHolder"></div>
-
+    </div>
     <br />
     <p>Type the name of a Looney Tunes character:</p>
     <!-- input form for submit button -->
@@ -54,29 +55,28 @@
     <script type="text/javascript">
       // onclick event for submit button
       $(document).ready(function() {
+        let samples = ['Tweetie', 'Bugs Bunny', 'Daffy Duck'];
+        for (var s = 0; s < samples.length; s++) {
+          let b = $('<button>');
+            b.addClass('character');
+            b.text(samples[s]);
+            $('#buttonHolder').append(b);
+           
+        }
+        $('#buttonHolder').on('click', '.character', function(){
+          getGifs($(this).text());
+        })
+
         $("#btnsubmit").on("click", function(event) {
           event.preventDefault();
 
           if (
-            $("#inputtopics")
-              .val()
-              .trim() == ""
-          ) {
+            $("#inputtopics").val().trim() == "") {
             alert("Please input a character name.");
           } else {
-            let topics = $("<input/>").attr({
-              type: "button",
-              name: "mybutton",
-              value: $("#inputtopics")
-                .val()
-                .trim()
-            });
+            let topics = $("<input/>").attr({type: "button",name: "mybutton",value: $("#inputtopics").val().trim()});
             $("#buttonHolder").append(topics);
-            getGifs(
-              $("#inputtopics")
-                .val()
-                .trim()
-            );
+            getGifs($("#inputtopics").val().trim());
           }
         });
         // search gifs with rating of 'g'
@@ -99,7 +99,7 @@
                 looneyImage.attr("image-still", searchResults[i].images.fixed_height_still.url);
                 looneyImage.attr("image-animate",searchResults[i].images.fixed_height.url);
                 looneyImage.attr("src", searchResults[i].images.fixed_height_still.url);
-                looneyImage.attr(("image-status", "still"));
+                looneyImage.attr("image-status", "still");
                 looneyImage.addClass("play");
                 //  append images to DOM
                 gifDiv.prepend(p);
@@ -109,7 +109,7 @@
 
                 $(".play").on("click", function() {
                   let status = $(this).attr("image-status");
-                  if (status == "still") {
+                  if (status === "still") {
                     $(this).attr("src", $(this).attr("image-animate"));
                     $(this).attr("image-status", "animate");
                   } else {
@@ -123,10 +123,12 @@
               alert("ERROR, nothing found, please check your input.");
             });
         }
+
+
       });
 
       
     </script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-  </body>
+    <!-- <script src = "logic.js"></script> -->
+    </body>
 </html>

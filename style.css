@@ -1,17 +1,59 @@
 #gifHolder {
-        background: pink;
-        /* margin-bottom: 400px;
-        margin-top: 400px; */
-        width: 100%;
+        /* background: rgb(240, 151, 225); */
+        width: auto;
 }
 
 #buttonHolder {
-
-        background: green;
+        box-flex: auto;
         margin-top: 20px;
+        width: auto;
+       
 }
 
 .item {
         display: inline-block;
-        margin: 12px;
+        margin: 3px;
+        padding: 3px;
+        background: rgb(166, 187, 186);
+        font-size: 15px;
+        font-weight: bold;
+       
     }
+
+.character {
+        margin: 12px;
+        background:rgb(118, 154, 233);
+}
+
+
+.userInput {
+        margin: 12px;
+        background: rgb(118, 154, 233);
+}
+
+p {
+        margin-top: 8px;
+        font-weight: bold;
+}
+
+.container-fluid {
+        background: rgb(225, 225, 238);
+}
+
+.inputButtons {
+        margin-bottom: 6px;
+        
+}
+#btnSubmit {
+        border-radius: 10px;
+        border: 2px solid rgba(255, 0, 0, 0.507);
+        padding: 4px;
+        width: 80px;
+        
+}
+
+h6 {
+        font-size: 30px;
+        font-family: Arial, Helvetica, sans-serif
+
+}

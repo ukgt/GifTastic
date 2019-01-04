@@ -18,11 +18,11 @@
 //             -->
 // onclick event for submit button
 $(document).ready(function () {
-  let samples = ['Tweetie', 'Bugs Bunny', 'Daffy Duck'];
-  for (var s = 0; s < samples.length; s++) {
+  let topics = ['Tweetie', 'Bugs Bunny', 'Daffy Duck'];
+  for (var s = 0; s < topics.length; s++) {
     let b = $('<button>');
     b.addClass('character');
-    b.text(samples[s]);
+    b.text(topics[s]);
     $('#buttonHolder').append(b);
 
   }
@@ -30,7 +30,7 @@ $(document).ready(function () {
     getGifs($(this).text());
   })
 
-  $("#btnsubmit").on("click", function (event) {
+  $("#btnSubmit").on("click", function (event) {
     event.preventDefault();
 
     if (
@@ -40,7 +40,8 @@ $(document).ready(function () {
       let topics = $("<input/>").attr({
         type: "button",
         name: "mybutton",
-        value: $("#inputtopics").val().trim()
+        value: $("#inputtopics").val().trim(),
+        class: "userInput"
       });
       $("#buttonHolder").append(topics);
       getGifs($("#inputtopics").val().trim());

@@ -10,3 +10,8 @@
         background: green;
         margin-top: 20px;
 }
+
+.item {
+        display: inline-block;
+        margin: 12px;
+    }

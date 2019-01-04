@@ -24,30 +24,31 @@ $(document).ready(function () {
     b.addClass('character');
     b.text(topics[s]);
     $('#buttonHolder').append(b);
-
   }
   $('#buttonHolder').on('click', '.character', function () {
     getGifs($(this).text());
   })
-
   $("#btnSubmit").on("click", function (event) {
     event.preventDefault();
-
+    $('#gifHolder').empty();
+    
+    
     if (
       $("#inputtopics").val().trim() == "") {
-      alert("Please input a character name.");
-    } else {
-      let topics = $("<input/>").attr({
-        type: "button",
-        name: "mybutton",
-        value: $("#inputtopics").val().trim(),
-        class: "userInput"
-      });
-      $("#buttonHolder").append(topics);
-      getGifs($("#inputtopics").val().trim());
-    }
+        alert("Please input a character name.");
+      } else {
+        let topics = $("<input/>").attr({
+          type: "button",
+          name: "mybutton",
+          value: $("#inputtopics").val().trim(),
+          class: "userInput"
+        });
+        $("#buttonHolder").append(topics);
+        getGifs($("#inputtopics").val().trim());
+      }
+      $('#gifHolder').empty();
   });
-  // search gifs with rating of 'g'
+  // search gifs with rating of 'g', limit of 10
   function getGifs(looneyName) {
     let queryURL = `https://api.giphy.com/v1/gifs/search?api_key=dc6zaTOxFJmzC&limit=10&rating=g&q=${looneyName}`;
 

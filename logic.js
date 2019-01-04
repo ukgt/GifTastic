@@ -18,7 +18,7 @@
 //             -->
 // onclick event for submit button
 $(document).ready(function () {
-  let topics = ['Tweetie', 'Bugs Bunny', 'Daffy Duck'];
+  let topics = ['TWEETIE', 'BUGS BUNNY', 'DAFFY DUCK'];
   for (var s = 0; s < topics.length; s++) {
     let b = $('<button>');
     b.addClass('character');
@@ -40,7 +40,7 @@ $(document).ready(function () {
         let topics = $("<input/>").attr({
           type: "button",
           name: "mybutton",
-          value: $("#inputtopics").val().trim(),
+          value: $("#inputtopics").val().trim().toUpperCase(),
           class: "userInput"
         });
         $("#buttonHolder").append(topics);
@@ -50,8 +50,8 @@ $(document).ready(function () {
   });
   // search gifs with rating of 'g', limit of 10
   function getGifs(looneyName) {
-    let queryURL = `https://api.giphy.com/v1/gifs/search?api_key=dc6zaTOxFJmzC&limit=10&rating=g&q=${looneyName}`;
-
+    // let queryURL = `https://api.giphy.com/v1/gifs/search?api_key=dc6zaTOxFJmzC&limit=10&rating=g&q=${looneyName}`;
+       let queryURL = `https://api.giphy.com/v1/gifs/search?q=${looneyName}&api_key=dc6zaTOxFJmzC&limit=10&rating=g`;
     $.ajax({
         url: queryURL,
         method: "GET"

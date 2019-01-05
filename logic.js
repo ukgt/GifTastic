@@ -30,7 +30,7 @@ $(document).ready(function () {
   })
   $("#btnSubmit").on("click", function (event) {
     event.preventDefault();
-    $('#gifHolder').empty();
+    $('#buttonHolder').empty();
     
     
     if (

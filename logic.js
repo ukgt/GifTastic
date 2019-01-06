@@ -30,7 +30,7 @@ $(document).ready(function () {
   })
   $("#btnSubmit").on("click", function (event) {
     event.preventDefault();
-    $('#buttonHolder').empty();
+    // $('#buttonHolder').empty();
     
     
     if (
@@ -73,7 +73,6 @@ $(document).ready(function () {
           //  append images to DOM
           gifDiv.prepend(p);
           gifDiv.prepend(looneyImage);
-
           $("#gifHolder").prepend(gifDiv);
         }
         $(".play").on("click", function () {
@@ -90,6 +89,7 @@ $(document).ready(function () {
       .catch(function (response) {
         alert("ERROR, nothing found, please check your input.");
       });
+      $('#gifHolder').empty();
   }
 
 
